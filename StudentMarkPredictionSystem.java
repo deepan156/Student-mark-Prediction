@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-// Abstract Class
+
 abstract class Person {
     protected String name;
     protected String dateOfBirth;
@@ -16,7 +16,7 @@ abstract class Person {
     public abstract void displayDetails();
 }
 
-// Encapsulated Student Class
+
 class Student extends Person {
     private String rollNumber;
     private String parentContact;
@@ -76,7 +76,7 @@ class Student extends Person {
     }
 }
 
-// Main class with Collection Framework usage
+
 public class StudentMarkPredictionSystem {
     private List<Student> students = new ArrayList<>();
 
@@ -100,11 +100,11 @@ public class StudentMarkPredictionSystem {
             try {
                 System.out.print("Enter the number of students: ");
                 numStudents = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine();
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter an integer.");
-                scanner.next(); // Clear the invalid input
+                scanner.next();
             }
         }
 
@@ -128,25 +128,25 @@ public class StudentMarkPredictionSystem {
             double scienceMarks = getValidMarks(scanner, "Science");
             double socialMarks = getValidMarks(scanner, "Social Science");
 
-            // Create a new student and add to the system
+            
             Student student = new Student(studentName, dateOfBirth, rollNumber, parentContact,
                                           tamilMarks, englishMarks, mathsMarks, scienceMarks, socialMarks);
             system.addStudent(student);
         }
 
-        // Display all students' information
+        
         system.displayAllStudents();
         scanner.close();
     }
 
-    // Helper method to validate and get marks input
+    
     private static double getValidMarks(Scanner scanner, String subject) {
         double marks = 0;
         while (true) {
             try {
                 System.out.print("Enter marks for " + subject + " (out of 100): ");
                 marks = scanner.nextDouble();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine(); 
                 if (marks < 0 || marks > 100) {
                     System.out.println("Invalid input. Please enter a number between 0 and 100.");
                 } else {
@@ -154,7 +154,7 @@ public class StudentMarkPredictionSystem {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
-                scanner.next(); // Clear the invalid input
+                scanner.next(); 
             }
         }
         return marks;
